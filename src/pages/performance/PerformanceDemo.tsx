@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 
 // Expensive calculation function to demonstrate useMemo
-const calculateExpensiveValue = (number) => {
+const calculateExpensiveValue = (number: number): number => {
   console.log('Calculating expensive value...');
   // Simulate expensive calculation
   let result = 0;
@@ -11,8 +11,18 @@ const calculateExpensiveValue = (number) => {
   return result;
 };
 
+interface Item {
+  id: number;
+  text: string;
+}
+
+interface ExpensiveListProps {
+  items: Item[];
+  onItemClick: (id: number) => void;
+}
+
 // Child component using React.memo
-const ExpensiveList = React.memo(function ExpensiveList({ items, onItemClick }) {
+const ExpensiveList = React.memo(function ExpensiveList({ items, onItemClick }: ExpensiveListProps) {
   console.log('ExpensiveList rendering...');
   return (
     <ul className="space-y-2">
@@ -29,8 +39,12 @@ const ExpensiveList = React.memo(function ExpensiveList({ items, onItemClick }) 
   );
 });
 
+interface CallbackChildProps {
+  onClick: (name: string) => void;
+}
+
 // Component to demonstrate useCallback
-const CallbackChild = React.memo(function CallbackChild({ onClick }) {
+const CallbackChild = React.memo(function CallbackChild({ onClick }: CallbackChildProps) {
   console.log('CallbackChild rendering...');
   return (
     <div className="space-y-2">
@@ -51,29 +65,29 @@ const CallbackChild = React.memo(function CallbackChild({ onClick }) {
 });
 
 function PerformanceDemo() {
-  const [count, setCount] = useState(0);
-  const [items] = useState([
+  const [count, setCount] = useState<number>(0);
+  const [items] = useState<Item[]>([
     { id: 1, text: 'Item 1' },
     { id: 2, text: 'Item 2' },
     { id: 3, text: 'Item 3' },
   ]);
-  const [inputValue, setInputValue] = useState('');
-  const [lastClicked, setLastClicked] = useState('None');
+  const [inputValue, setInputValue] = useState<string>('');
+  const [lastClicked, setLastClicked] = useState<string>('None');
 
   // useCallback example - this function won't be recreated on every render
-  const handleItemClick = useCallback((id) => {
+  const handleItemClick = useCallback((id: number) => {
     console.log('Item clicked:', id);
     // The function reference stays the same between renders
   }, []); // Empty dependency array means this function never changes
 
   // Another useCallback example with dependencies
-  const handleButtonClick = useCallback((buttonName) => {
+  const handleButtonClick = useCallback((buttonName: string) => {
     console.log('Button clicked:', buttonName);
     setLastClicked(buttonName);
   }, []); // Empty dependency array since we don't use any external values
 
   // Non-memoized function for comparison
-  const handleButtonClickNormal = (buttonName) => {
+  const handleButtonClickNormal = (buttonName: string) => {
     console.log('Normal button clicked:', buttonName);
     setLastClicked(buttonName);
   };
