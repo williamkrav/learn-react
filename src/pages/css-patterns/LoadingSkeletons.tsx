@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../../components/ui/Card';
 
-interface Post {
-  title: string;
-  content: string;
-  author: string;
-  date: string;
-}
-
 function LoadingSkeletons() {
   const [isLoading, setIsLoading] = useState(true);
   const [showCode, setShowCode] = useState<string | null>(null);
@@ -44,9 +37,7 @@ function LoadingSkeletons() {
         >
           Reload Skeletons
         </button>
-        <div className="text-sm text-gray-400">
-          {isLoading ? 'Loading...' : 'Content Loaded'}
-        </div>
+        <div className="text-sm text-gray-400">{isLoading ? 'Loading...' : 'Content Loaded'}</div>
       </div>
 
       {/* Basic Text Skeleton */}
@@ -77,7 +68,7 @@ function LoadingSkeletons() {
           {showCode === 'basic' && (
             <pre className="mt-4 p-4 bg-gray-700 rounded overflow-x-auto">
               <code className="text-sm">
-{`<div className="space-y-4">
+                {`<div className="space-y-4">
   <div className="h-4 bg-gray-700 rounded w-3/4 animate-pulse" />
   <div className="h-4 bg-gray-700 rounded w-1/2 animate-pulse" />
   <div className="h-4 bg-gray-700 rounded w-5/6 animate-pulse" />
@@ -117,8 +108,8 @@ function LoadingSkeletons() {
                   </div>
                   <h3 className="text-xl font-semibold">Card Title</h3>
                   <p className="text-gray-400">
-                    This is the card content that appears after loading.
-                    Notice how it matches the skeleton structure.
+                    This is the card content that appears after loading. Notice how it matches the
+                    skeleton structure.
                   </p>
                   <div className="flex justify-between items-center pt-4">
                     <div className="flex items-center gap-3">
@@ -163,9 +154,7 @@ function LoadingSkeletons() {
                       <h4 className="font-medium">List Item {i}</h4>
                       <p className="text-sm text-gray-400">Item description</p>
                     </div>
-                    <button className="px-4 py-2 bg-blue-500 rounded">
-                      Action
-                    </button>
+                    <button className="px-4 py-2 bg-blue-500 rounded">Action</button>
                   </div>
                 </div>
               ))}
@@ -189,45 +178,41 @@ function LoadingSkeletons() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-700">
-                {isLoading ? (
-                  [1, 2, 3].map((i) => (
-                    <tr key={i}>
-                      <td className="py-3 px-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 bg-gray-700 rounded-full animate-pulse" />
-                          <div className="h-4 bg-gray-700 rounded w-24 animate-pulse" />
-                        </div>
-                      </td>
-                      <td className="py-3 px-4">
-                        <div className="h-4 bg-gray-700 rounded w-20 animate-pulse" />
-                      </td>
-                      <td className="py-3 px-4">
-                        <div className="h-4 bg-gray-700 rounded w-16 animate-pulse" />
-                      </td>
-                      <td className="py-3 px-4">
-                        <div className="h-8 bg-gray-700 rounded w-20 animate-pulse" />
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  [1, 2, 3].map((i) => (
-                    <tr key={i}>
-                      <td className="py-3 px-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 bg-gray-700 rounded-full" />
-                          <span>User Name</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-4">Developer</td>
-                      <td className="py-3 px-4">Active</td>
-                      <td className="py-3 px-4">
-                        <button className="px-4 py-2 bg-blue-500 rounded">
-                          Edit
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                )}
+                {isLoading
+                  ? [1, 2, 3].map((i) => (
+                      <tr key={i}>
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-gray-700 rounded-full animate-pulse" />
+                            <div className="h-4 bg-gray-700 rounded w-24 animate-pulse" />
+                          </div>
+                        </td>
+                        <td className="py-3 px-4">
+                          <div className="h-4 bg-gray-700 rounded w-20 animate-pulse" />
+                        </td>
+                        <td className="py-3 px-4">
+                          <div className="h-4 bg-gray-700 rounded w-16 animate-pulse" />
+                        </td>
+                        <td className="py-3 px-4">
+                          <div className="h-8 bg-gray-700 rounded w-20 animate-pulse" />
+                        </td>
+                      </tr>
+                    ))
+                  : [1, 2, 3].map((i) => (
+                      <tr key={i}>
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-gray-700 rounded-full" />
+                            <span>User Name</span>
+                          </div>
+                        </td>
+                        <td className="py-3 px-4">Developer</td>
+                        <td className="py-3 px-4">Active</td>
+                        <td className="py-3 px-4">
+                          <button className="px-4 py-2 bg-blue-500 rounded">Edit</button>
+                        </td>
+                      </tr>
+                    ))}
               </tbody>
             </table>
           </div>
@@ -252,4 +237,4 @@ function LoadingSkeletons() {
   );
 }
 
-export default LoadingSkeletons; 
+export default LoadingSkeletons;

@@ -8,7 +8,7 @@ function withDebounce<P extends object>(
 ) {
   return function WithDebounceComponent(props: P & { onSearch: (query: string) => void }) {
     const [debouncedValue, setDebouncedValue] = useState('');
-    
+
     useEffect(() => {
       const timer = setTimeout(() => {
         props.onSearch(debouncedValue);
@@ -64,13 +64,16 @@ function useDebounce<T>(value: T, delay: number): T {
 function useThrottle<T extends (...args: any[]) => any>(callback: T, delay: number) {
   const [lastCall, setLastCall] = useState(0);
 
-  return useCallback((...args: Parameters<T>) => {
-    const now = Date.now();
-    if (now - lastCall >= delay) {
-      callback(...args);
-      setLastCall(now);
-    }
-  }, [callback, delay, lastCall]);
+  return useCallback(
+    (...args: Parameters<T>) => {
+      const now = Date.now();
+      if (now - lastCall >= delay) {
+        callback(...args);
+        setLastCall(now);
+      }
+    },
+    [callback, delay, lastCall]
+  );
 }
 
 // Example Components using HoC
@@ -128,7 +131,7 @@ function DebouncingAndThrottling() {
 
   // Throttled click handler using custom hook
   const handleThrottledClick = useThrottle(() => {
-    setHookClickCount(prev => prev + 1);
+    setHookClickCount((prev) => prev + 1);
   }, 1000);
 
   return (
@@ -136,14 +139,15 @@ function DebouncingAndThrottling() {
       <header>
         <h1 className="text-3xl font-bold mb-4">Debouncing and Throttling</h1>
         <p className="text-gray-400">
-          Learn how to optimize performance using debouncing and throttling with Higher-Order Components and React Hooks.
+          Learn how to optimize performance using debouncing and throttling with Higher-Order
+          Components and React Hooks.
         </p>
       </header>
 
       {/* HoC Examples */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Higher-Order Component Examples</h2>
-        
+
         <Card className="bg-gray-800 border-gray-700">
           <h3 className="text-xl font-semibold mb-4">Debounced Search (HoC)</h3>
           <div className="space-y-4">
@@ -163,7 +167,7 @@ function DebouncingAndThrottling() {
           {showCode === 'debounce-hoc' && (
             <pre className="mt-4 p-4 bg-gray-700 rounded overflow-x-auto">
               <code className="text-sm">
-{`function withDebounce<P extends object>(
+                {`function withDebounce<P extends object>(
   WrappedComponent: ComponentType<P & { onSearch: (query: string) => void }>,
   delay: number
 ) {
@@ -193,7 +197,7 @@ function DebouncingAndThrottling() {
         <Card className="bg-gray-800 border-gray-700">
           <h3 className="text-xl font-semibold mb-4">Throttled Button (HoC)</h3>
           <div className="space-y-4">
-            <ThrottledButton onClick={() => setClickCount(prev => prev + 1)} />
+            <ThrottledButton onClick={() => setClickCount((prev) => prev + 1)} />
             <div className="text-sm text-gray-400">
               Click count: {clickCount} (throttled to once per second)
             </div>
@@ -207,7 +211,7 @@ function DebouncingAndThrottling() {
           {showCode === 'throttle-hoc' && (
             <pre className="mt-4 p-4 bg-gray-700 rounded overflow-x-auto">
               <code className="text-sm">
-{`function withThrottle<P extends object>(
+                {`function withThrottle<P extends object>(
   WrappedComponent: ComponentType<P & { onClick: () => void }>,
   delay: number
 ) {
@@ -234,7 +238,7 @@ function DebouncingAndThrottling() {
       {/* Hook Examples */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">React Hooks Examples</h2>
-        
+
         <Card className="bg-gray-800 border-gray-700">
           <h3 className="text-xl font-semibold mb-4">Debounced Search (Hook)</h3>
           <div className="space-y-4">
@@ -260,7 +264,7 @@ function DebouncingAndThrottling() {
           {showCode === 'debounce-hook' && (
             <pre className="mt-4 p-4 bg-gray-700 rounded overflow-x-auto">
               <code className="text-sm">
-{`function useDebounce<T>(value: T, delay: number): T {
+                {`function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
@@ -300,7 +304,7 @@ function DebouncingAndThrottling() {
           {showCode === 'throttle-hook' && (
             <pre className="mt-4 p-4 bg-gray-700 rounded overflow-x-auto">
               <code className="text-sm">
-{`function useThrottle<T extends (...args: any[]) => any>(callback: T, delay: number) {
+                {`function useThrottle<T extends (...args: any[]) => any>(callback: T, delay: number) {
   const [lastCall, setLastCall] = useState(0);
 
   return useCallback((...args: Parameters<T>) => {
@@ -343,10 +347,15 @@ function DebouncingAndThrottling() {
             <div>
               <h3 className="text-xl font-semibold mb-2">HoC vs Hooks</h3>
               <ul className="list-disc list-inside space-y-2 text-gray-300">
-                <li>Use HoC when you want to reuse the same debounce/throttle logic across multiple components</li>
+                <li>
+                  Use HoC when you want to reuse the same debounce/throttle logic across multiple
+                  components
+                </li>
                 <li>Use Hooks when you need more flexibility or component-specific behavior</li>
                 <li>Hooks are generally more readable and easier to test</li>
-                <li>HoC are better for complex transformations that affect multiple props or methods</li>
+                <li>
+                  HoC are better for complex transformations that affect multiple props or methods
+                </li>
               </ul>
             </div>
           </div>
@@ -356,4 +365,4 @@ function DebouncingAndThrottling() {
   );
 }
 
-export default DebouncingAndThrottling; 
+export default DebouncingAndThrottling;

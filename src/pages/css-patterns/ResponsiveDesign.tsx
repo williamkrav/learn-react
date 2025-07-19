@@ -19,8 +19,12 @@ function ResponsiveDesign() {
             <div className="p-4 bg-gray-700 rounded">
               <p className="hidden sm:block text-green-400">Visible on small screens and up (sm)</p>
               <p className="hidden md:block text-blue-400">Visible on medium screens and up (md)</p>
-              <p className="hidden lg:block text-purple-400">Visible on large screens and up (lg)</p>
-              <p className="hidden xl:block text-pink-400">Visible on extra large screens and up (xl)</p>
+              <p className="hidden lg:block text-purple-400">
+                Visible on large screens and up (lg)
+              </p>
+              <p className="hidden xl:block text-pink-400">
+                Visible on extra large screens and up (xl)
+              </p>
               <p className="block sm:hidden text-red-400">Only visible on extra small screens</p>
             </div>
             <pre className="p-4 bg-gray-700 rounded overflow-x-auto">
@@ -61,7 +65,8 @@ xl: '1280px'  // @media (min-width: 1280px)
             This text scales with the viewport
           </h3>
           <p className="mt-4 text-sm sm:text-base md:text-lg text-gray-400">
-            Typography can also be responsive using media queries or modern CSS features like clamp().
+            Typography can also be responsive using media queries or modern CSS features like
+            clamp().
           </p>
         </Card>
       </section>
@@ -107,4 +112,4 @@ xl: '1280px'  // @media (min-width: 1280px)
   );
 }
 
-export default ResponsiveDesign; 
+export default ResponsiveDesign;

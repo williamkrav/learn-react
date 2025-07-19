@@ -22,12 +22,15 @@ interface ExpensiveListProps {
 }
 
 // Child component using React.memo
-const ExpensiveList = React.memo(function ExpensiveList({ items, onItemClick }: ExpensiveListProps) {
+const ExpensiveList = React.memo(function ExpensiveList({
+  items,
+  onItemClick,
+}: ExpensiveListProps) {
   console.log('ExpensiveList rendering...');
   return (
     <ul className="space-y-2">
       {items.map((item) => (
-        <li 
+        <li
           key={item.id}
           onClick={() => onItemClick(item.id)}
           className="p-2 bg-gray-700 rounded cursor-pointer hover:bg-gray-600 transition-colors"
@@ -107,7 +110,7 @@ function PerformanceDemo() {
         <p className="mb-2">Count: {count}</p>
         <p className="mb-4">Expensive Calculated Value: {expensiveValue}</p>
         <button
-          onClick={() => setCount(c => c + 1)}
+          onClick={() => setCount((c) => c + 1)}
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
         >
           Increment Count
@@ -149,8 +152,8 @@ function PerformanceDemo() {
         <p className="mt-4 text-sm text-gray-400">
           Last clicked: {lastClicked}
           <br />
-          Open console and type in the input above - notice how the right component
-          re-renders on every input change, but the left one doesn't
+          Open console and type in the input above - notice how the right component re-renders on
+          every input change, but the left one doesn't
         </p>
       </section>
 
@@ -159,16 +162,17 @@ function PerformanceDemo() {
         <h2 className="text-xl font-semibold mb-4">Why useCallback?</h2>
         <div className="space-y-2 text-gray-300">
           <p>
-            Without useCallback, <code className="text-blue-400">handleButtonClickNormal</code> is recreated
-            on every render (try typing in the input field above).
+            Without useCallback, <code className="text-blue-400">handleButtonClickNormal</code> is
+            recreated on every render (try typing in the input field above).
           </p>
           <p>
-            Even though the function does the same thing, React.memo sees it as a new prop
-            and re-renders the component unnecessarily.
+            Even though the function does the same thing, React.memo sees it as a new prop and
+            re-renders the component unnecessarily.
           </p>
           <p>
-            With useCallback, <code className="text-blue-400">handleButtonClick</code> keeps the same reference
-            between renders, preventing unnecessary re-renders of the memoized child component.
+            With useCallback, <code className="text-blue-400">handleButtonClick</code> keeps the
+            same reference between renders, preventing unnecessary re-renders of the memoized child
+            component.
           </p>
         </div>
       </section>
@@ -176,4 +180,4 @@ function PerformanceDemo() {
   );
 }
 
-export default PerformanceDemo; 
+export default PerformanceDemo;

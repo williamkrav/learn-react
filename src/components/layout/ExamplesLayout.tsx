@@ -13,4 +13,4 @@ function ExamplesLayout() {
   );
 }
 
-export default ExamplesLayout; 
+export default ExamplesLayout;

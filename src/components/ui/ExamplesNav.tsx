@@ -9,10 +9,10 @@ const examples = {
     { path: '/css/transitions', label: 'Transitions & Animations' },
     { path: '/css/skeletons', label: 'Loading Skeletons' },
   ],
-  'Performance': [
+  Performance: [
     { path: '/performance/optimization', label: 'React.memo & Hooks' },
     { path: '/performance/debounce', label: 'Debouncing & Throttling' },
-  ]
+  ],
 };
 
 function ExamplesNav() {
@@ -49,4 +49,4 @@ function ExamplesNav() {
   );
 }
 
-export default ExamplesNav; 
+export default ExamplesNav;

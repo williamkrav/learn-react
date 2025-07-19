@@ -46,9 +46,7 @@ function PositionsAndDisplay() {
               >
                 {selectedPosition}
               </div>
-              <div className="mt-64 text-gray-400">
-                More content to enable scrolling...
-              </div>
+              <div className="mt-64 text-gray-400">More content to enable scrolling...</div>
             </div>
 
             <div className="bg-gray-700 rounded p-4">
@@ -64,7 +62,7 @@ ${selectedPosition !== 'static' ? 'top: 8px;\nleft: 8px;' : ''}`}
       {/* Display Properties */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Display Properties</h2>
-        
+
         {/* Block vs Inline vs Inline-Block */}
         <Card className="bg-gray-800 border-gray-700">
           <h3 className="font-medium mb-3">Block vs Inline vs Inline-Block</h3>
@@ -136,9 +134,15 @@ ${selectedPosition !== 'static' ? 'top: 8px;\nleft: 8px;' : ''}`}
               Hover me
             </button>
             <div className="absolute top-full left-0 mt-2 w-48 bg-gray-700 rounded shadow-lg py-1">
-              <a href="#" className="block px-4 py-2 hover:bg-gray-600">Option 1</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-600">Option 2</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-600">Option 3</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-600">
+                Option 1
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-600">
+                Option 2
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-600">
+                Option 3
+              </a>
             </div>
           </div>
         </Card>
@@ -162,4 +166,4 @@ ${selectedPosition !== 'static' ? 'top: 8px;\nleft: 8px;' : ''}`}
   );
 }
 
-export default PositionsAndDisplay; 
+export default PositionsAndDisplay;

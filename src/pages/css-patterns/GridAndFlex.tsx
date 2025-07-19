@@ -23,7 +23,7 @@ function GridAndFlex() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Flex Direction</label>
-                <select 
+                <select
                   className="w-full bg-gray-700 border-gray-600 rounded p-2"
                   value={selectedFlexDirection}
                   onChange={(e) => setFlexDirection(e.target.value)}
@@ -36,7 +36,7 @@ function GridAndFlex() {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Justify Content</label>
-                <select 
+                <select
                   className="w-full bg-gray-700 border-gray-600 rounded p-2"
                   value={selectedJustify}
                   onChange={(e) => setJustify(e.target.value)}
@@ -51,7 +51,7 @@ function GridAndFlex() {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Align Items</label>
-                <select 
+                <select
                   className="w-full bg-gray-700 border-gray-600 rounded p-2"
                   value={selectedAlign}
                   onChange={(e) => setAlign(e.target.value)}
@@ -65,13 +65,13 @@ function GridAndFlex() {
               </div>
             </div>
 
-            <div 
+            <div
               className="h-64 bg-gray-700 rounded p-4"
               style={{
                 display: 'flex',
                 flexDirection: selectedFlexDirection as any,
                 justifyContent: selectedJustify,
-                alignItems: selectedAlign
+                alignItems: selectedAlign,
               }}
             >
               <div className="bg-blue-500 text-white p-4 rounded">1</div>
@@ -81,7 +81,7 @@ function GridAndFlex() {
 
             <pre className="bg-gray-700 p-4 rounded overflow-x-auto">
               <code className="text-sm">
-{`.container {
+                {`.container {
   display: flex;
   flex-direction: ${selectedFlexDirection};
   justify-content: ${selectedJustify};
@@ -96,7 +96,7 @@ function GridAndFlex() {
       {/* Common Flexbox Patterns */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Common Flexbox Patterns</h2>
-        
+
         {/* Navigation Bar */}
         <Card className="bg-gray-800 border-gray-700">
           <h3 className="font-medium mb-3">Navigation Bar</h3>
@@ -104,9 +104,21 @@ function GridAndFlex() {
             <nav className="flex justify-between items-center">
               <div className="text-xl font-bold">Logo</div>
               <ul className="flex gap-4">
-                <li><a href="#" className="hover:text-blue-400">Home</a></li>
-                <li><a href="#" className="hover:text-blue-400">About</a></li>
-                <li><a href="#" className="hover:text-blue-400">Contact</a></li>
+                <li>
+                  <a href="#" className="hover:text-blue-400">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-blue-400">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-blue-400">
+                    Contact
+                  </a>
+                </li>
               </ul>
             </nav>
           </div>
@@ -124,8 +136,8 @@ function GridAndFlex() {
               <div className="flex-grow">
                 <h4 className="font-medium">Card Title</h4>
                 <p className="text-sm text-gray-400">
-                  This card uses flex-shrink-0 to prevent the image from shrinking
-                  and flex-grow to allow the content to take remaining space.
+                  This card uses flex-shrink-0 to prevent the image from shrinking and flex-grow to
+                  allow the content to take remaining space.
                 </p>
               </div>
             </div>
@@ -136,7 +148,7 @@ function GridAndFlex() {
       {/* CSS Grid Examples */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">CSS Grid Layouts</h2>
-        
+
         {/* Basic Grid */}
         <Card className="bg-gray-800 border-gray-700">
           <h3 className="font-medium mb-3">Basic Grid</h3>
@@ -151,7 +163,7 @@ function GridAndFlex() {
           </div>
           <pre className="mt-4 bg-gray-700 p-4 rounded overflow-x-auto">
             <code className="text-sm">
-{`.grid-container {
+              {`.grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -165,9 +177,7 @@ function GridAndFlex() {
           <h3 className="font-medium mb-3">Advanced Grid Layout</h3>
           <div className="bg-gray-700 rounded p-4">
             <div className="grid grid-cols-4 grid-rows-2 gap-4">
-              <div className="bg-blue-500 col-span-2 row-span-2 p-4 rounded">
-                Featured
-              </div>
+              <div className="bg-blue-500 col-span-2 row-span-2 p-4 rounded">Featured</div>
               <div className="bg-blue-600 p-4 rounded">Item 2</div>
               <div className="bg-blue-700 p-4 rounded">Item 3</div>
               <div className="bg-blue-600 p-4 rounded">Item 4</div>
@@ -176,7 +186,7 @@ function GridAndFlex() {
           </div>
           <pre className="mt-4 bg-gray-700 p-4 rounded overflow-x-auto">
             <code className="text-sm">
-{`.grid-container {
+              {`.grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -205,7 +215,7 @@ function GridAndFlex() {
           </div>
           <pre className="mt-4 bg-gray-700 p-4 rounded overflow-x-auto">
             <code className="text-sm">
-{`.grid-container {
+              {`.grid-container {
   display: grid;
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: auto 1fr auto;
@@ -236,4 +246,4 @@ header, footer { grid-column: 1 / -1; }`}
   );
 }
 
-export default GridAndFlex; 
+export default GridAndFlex;

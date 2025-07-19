@@ -17,13 +17,13 @@ function TransitionsAndAnimations() {
       {/* CSS Transitions */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">CSS Transitions</h2>
-        
+
         {/* Basic Transitions */}
         <Card className="bg-gray-800 border-gray-700">
           <h3 className="font-medium mb-3">Basic Transitions</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="space-y-2">
-              <div 
+              <div
                 className="h-24 bg-blue-500 rounded transition-all duration-300 hover:bg-blue-600 hover:scale-110"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -76,7 +76,7 @@ transform: scale(${isHovered ? '1.1' : '1'});`}
       {/* CSS Animations */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">CSS Animations</h2>
-        
+
         {/* Keyframe Animations */}
         <Card className="bg-gray-800 border-gray-700">
           <h3 className="font-medium mb-3">Keyframe Animations</h3>
@@ -107,14 +107,12 @@ transform: scale(${isHovered ? '1.1' : '1'});`}
               onClick={() => setIsPlaying(true)}
               onAnimationEnd={() => setIsPlaying(false)}
             >
-              <div className={`${isPlaying ? 'animate-wiggle' : ''}`}>
-                Click me to animate
-              </div>
+              <div className={`${isPlaying ? 'animate-wiggle' : ''}`}>Click me to animate</div>
             </button>
 
             <pre className="bg-gray-700 p-4 rounded text-sm">
               <code>
-{`@keyframes wiggle {
+                {`@keyframes wiggle {
   0%, 100% { transform: rotate(-3deg); }
   50% { transform: rotate(3deg); }
 }
@@ -175,17 +173,26 @@ transform: scale(${isHovered ? '1.1' : '1'});`}
         </Card>
       </section>
 
-      <style jsx>{`
+      <style>{`
         @keyframes progress {
-          from { transform: scaleX(0); }
-          to { transform: scaleX(1); }
+          from {
+            transform: scaleX(0);
+          }
+          to {
+            transform: scaleX(1);
+          }
         }
         .animate-progress {
           animation: progress 2s linear infinite;
         }
         @keyframes wiggle {
-          0%, 100% { transform: rotate(-3deg); }
-          50% { transform: rotate(3deg); }
+          0%,
+          100% {
+            transform: rotate(-3deg);
+          }
+          50% {
+            transform: rotate(3deg);
+          }
         }
         .animate-wiggle {
           animation: wiggle 200ms ease-in-out;
@@ -195,4 +202,4 @@ transform: scale(${isHovered ? '1.1' : '1'});`}
   );
 }
 
-export default TransitionsAndAnimations; 
+export default TransitionsAndAnimations;

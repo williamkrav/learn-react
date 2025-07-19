@@ -15,4 +15,4 @@ function Card({ title, children, className = '' }: CardProps) {
   );
 }
 
-export default Card; 
+export default Card;

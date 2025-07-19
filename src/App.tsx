@@ -9,9 +9,13 @@ import ExamplesLayout from './components/layout/ExamplesLayout';
 const ResponsiveDesign = React.lazy(() => import('./pages/css-patterns/ResponsiveDesign'));
 const GridAndFlex = React.lazy(() => import('./pages/css-patterns/GridAndFlex'));
 const PositionsAndDisplay = React.lazy(() => import('./pages/css-patterns/PositionsAndDisplay'));
-const TransitionsAndAnimations = React.lazy(() => import('./pages/css-patterns/TransitionsAndAnimations'));
+const TransitionsAndAnimations = React.lazy(
+  () => import('./pages/css-patterns/TransitionsAndAnimations')
+);
 const LoadingSkeletons = React.lazy(() => import('./pages/css-patterns/LoadingSkeletons'));
-const DebouncingAndThrottling = React.lazy(() => import('./pages/performance/DebouncingAndThrottling'));
+const DebouncingAndThrottling = React.lazy(
+  () => import('./pages/performance/DebouncingAndThrottling')
+);
 const PerformanceDemo = React.lazy(() => import('./pages/performance/PerformanceDemo'));
 
 function App() {
@@ -19,15 +23,17 @@ function App() {
     <Router>
       <div className="min-h-screen bg-gray-900 text-gray-100">
         <Navbar />
-        <React.Suspense fallback={
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
-          </div>
-        }>
+        <React.Suspense
+          fallback={
+            <div className="flex items-center justify-center min-h-screen">
+              <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+          }
+        >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            
+
             {/* Examples routes */}
             <Route path="/" element={<ExamplesLayout />}>
               <Route path="css/responsive" element={<ResponsiveDesign />} />
@@ -45,4 +51,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
