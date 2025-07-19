@@ -29,7 +29,27 @@ const ExpensiveList = React.memo(function ExpensiveList({ items, onItemClick }) 
   );
 });
 
-// Main component demonstrating all optimization techniques
+// Component to demonstrate useCallback
+const CallbackChild = React.memo(function CallbackChild({ onClick }) {
+  console.log('CallbackChild rendering...');
+  return (
+    <div className="space-y-2">
+      <button
+        onClick={() => onClick('Button 1')}
+        className="w-full p-2 bg-gray-700 rounded hover:bg-gray-600 transition-colors"
+      >
+        Button 1
+      </button>
+      <button
+        onClick={() => onClick('Button 2')}
+        className="w-full p-2 bg-gray-700 rounded hover:bg-gray-600 transition-colors"
+      >
+        Button 2
+      </button>
+    </div>
+  );
+});
+
 function PerformanceDemo() {
   const [count, setCount] = useState(0);
   const [items] = useState([
@@ -38,12 +58,25 @@ function PerformanceDemo() {
     { id: 3, text: 'Item 3' },
   ]);
   const [inputValue, setInputValue] = useState('');
+  const [lastClicked, setLastClicked] = useState('None');
 
   // useCallback example - this function won't be recreated on every render
   const handleItemClick = useCallback((id) => {
     console.log('Item clicked:', id);
     // The function reference stays the same between renders
   }, []); // Empty dependency array means this function never changes
+
+  // Another useCallback example with dependencies
+  const handleButtonClick = useCallback((buttonName) => {
+    console.log('Button clicked:', buttonName);
+    setLastClicked(buttonName);
+  }, []); // Empty dependency array since we don't use any external values
+
+  // Non-memoized function for comparison
+  const handleButtonClickNormal = (buttonName) => {
+    console.log('Normal button clicked:', buttonName);
+    setLastClicked(buttonName);
+  };
 
   // useMemo example - expensive calculation result is memoized
   const expensiveValue = useMemo(() => {
@@ -86,14 +119,44 @@ function PerformanceDemo() {
         </p>
       </section>
 
+      {/* useCallback comparison section */}
+      <section className="mb-8 p-4 border border-gray-700 rounded-lg bg-gray-800">
+        <h2 className="text-xl font-semibold mb-4">useCallback vs Normal Function</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <h3 className="font-medium mb-2">With useCallback</h3>
+            <CallbackChild onClick={handleButtonClick} />
+          </div>
+          <div>
+            <h3 className="font-medium mb-2">Without useCallback</h3>
+            <CallbackChild onClick={handleButtonClickNormal} />
+          </div>
+        </div>
+        <p className="mt-4 text-sm text-gray-400">
+          Last clicked: {lastClicked}
+          <br />
+          Open console and type in the input above - notice how the right component
+          re-renders on every input change, but the left one doesn't
+        </p>
+      </section>
+
       {/* useCallback explanation */}
       <section className="p-4 border border-gray-700 rounded-lg bg-gray-800">
-        <h2 className="text-xl font-semibold mb-4">useCallback Example</h2>
-        <p className="text-gray-300">
-          The click handler for list items is memoized with useCallback.
-          Open the console to see that the list only renders once,
-          even though the parent component re-renders when you type in the input.
-        </p>
+        <h2 className="text-xl font-semibold mb-4">Why useCallback?</h2>
+        <div className="space-y-2 text-gray-300">
+          <p>
+            Without useCallback, <code className="text-blue-400">handleButtonClickNormal</code> is recreated
+            on every render (try typing in the input field above).
+          </p>
+          <p>
+            Even though the function does the same thing, React.memo sees it as a new prop
+            and re-renders the component unnecessarily.
+          </p>
+          <p>
+            With useCallback, <code className="text-blue-400">handleButtonClick</code> keeps the same reference
+            between renders, preventing unnecessary re-renders of the memoized child component.
+          </p>
+        </div>
       </section>
     </div>
   );
