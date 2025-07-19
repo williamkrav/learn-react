@@ -38,7 +38,7 @@ transform: scale(${isHovered ? '1.1' : '1'});`}
             </div>
 
             <div className="space-y-2">
-              <div className="h-24 bg-purple-500 rounded transition-[width] duration-300 hover:w-full" />
+              <div className="h-24 bg-purple-500 rounded transition-width duration-300 hover:w-full" />
               <p className="text-sm text-gray-400">Width transition</p>
             </div>
 
