@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/ui/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
-import PerformanceDemo from './pages/performance/PerformanceDemo';
 import ExamplesLayout from './components/layout/ExamplesLayout';
 
 // Lazy load example pages
 const ResponsiveDesign = React.lazy(() => import('./pages/css-patterns/ResponsiveDesign'));
 const GridAndFlex = React.lazy(() => import('./pages/css-patterns/GridAndFlex'));
 const PositionsAndDisplay = React.lazy(() => import('./pages/css-patterns/PositionsAndDisplay'));
-const TransitionsAndAnimations = React.lazy(() => import('./pages/css-patterns/TransitionsAndAnimations.tsx'));
-const LoadingSkeletons = React.lazy(() => import('./pages/css-patterns/LoadingSkeletons.tsx'));
-const DebouncingAndThrottling = React.lazy(() => import('./pages/performance/DebouncingAndThrottling.tsx'));
+const TransitionsAndAnimations = React.lazy(() => import('./pages/css-patterns/TransitionsAndAnimations'));
+const LoadingSkeletons = React.lazy(() => import('./pages/css-patterns/LoadingSkeletons'));
+const DebouncingAndThrottling = React.lazy(() => import('./pages/performance/DebouncingAndThrottling'));
+const PerformanceDemo = React.lazy(() => import('./pages/performance/PerformanceDemo'));
 
 function App() {
   return (
@@ -27,7 +27,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/performance" element={<PerformanceDemo />} />
             
             {/* Examples routes */}
             <Route path="/" element={<ExamplesLayout />}>
@@ -36,7 +35,8 @@ function App() {
               <Route path="css/positions" element={<PositionsAndDisplay />} />
               <Route path="css/transitions" element={<TransitionsAndAnimations />} />
               <Route path="css/skeletons" element={<LoadingSkeletons />} />
-              <Route path="interactions/debounce" element={<DebouncingAndThrottling />} />
+              <Route path="performance/optimization" element={<PerformanceDemo />} />
+              <Route path="performance/debounce" element={<DebouncingAndThrottling />} />
             </Route>
           </Routes>
         </React.Suspense>

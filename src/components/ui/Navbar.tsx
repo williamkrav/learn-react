@@ -17,11 +17,6 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/performance" className="hover:text-blue-400 transition-colors">
-              Performance Demo
-            </Link>
-          </li>
-          <li>
             <Link to="/css/responsive" className="hover:text-blue-400 transition-colors">
               Examples
             </Link>
