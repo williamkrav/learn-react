@@ -15,6 +15,7 @@ const examples = {
     { path: '/performance/debounce', label: 'Debouncing & Throttling' },
     { path: '/performance/form-validation', label: 'Form Validation' },
   ],
+  'State Management': [{ path: '/state-management/context-example', label: 'Context API Example' }],
 };
 
 function ExamplesNav() {
