@@ -9,6 +9,7 @@ const examples = {
     { path: '/css/transitions', label: 'Transitions & Animations' },
     { path: '/css/skeletons', label: 'Loading Skeletons' },
     { path: '/css/gradients', label: 'CSS Gradients' },
+    { path: '/css/images', label: 'Image Handling' },
   ],
   Performance: [
     { path: '/performance/optimization', label: 'React.memo & Hooks' },

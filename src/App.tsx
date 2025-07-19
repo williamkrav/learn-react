@@ -21,6 +21,7 @@ const PerformanceDemo = React.lazy(() => import('./pages/performance/Performance
 const FormValidation = React.lazy(() => import('./pages/performance/FormValidation'));
 const Gradients = React.lazy(() => import('./pages/css-patterns/Gradients'));
 const ContextApiExample = React.lazy(() => import('./pages/state-management/ContextApiExample'));
+const ImageHandling = React.lazy(() => import('./pages/css-patterns/ImageHandling'));
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
                 <Route path="css/transitions" element={<TransitionsAndAnimations />} />
                 <Route path="css/skeletons" element={<LoadingSkeletons />} />
                 <Route path="css/gradients" element={<Gradients />} />
+                <Route path="css/images" element={<ImageHandling />} />
                 <Route path="performance/optimization" element={<PerformanceDemo />} />
                 <Route path="performance/debounce" element={<DebouncingAndThrottling />} />
                 <Route path="performance/form-validation" element={<FormValidation />} />

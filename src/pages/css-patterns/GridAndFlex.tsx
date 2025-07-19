@@ -132,7 +132,9 @@ function GridAndFlex() {
           <h3 className="font-medium mb-3">Media Card</h3>
           <div className="bg-gray-700 rounded p-4">
             <div className="flex gap-4">
-              <div className="w-24 h-24 bg-gray-600 rounded flex-shrink-0"></div>
+              <div className="w-24 h-24 bg-gray-600 rounded flex-shrink-0">
+                <img src="https://placehold.co/600x400/EEE/31343C" alt="Placeholder" />
+              </div>
               <div className="flex-grow">
                 <h4 className="font-medium">Card Title</h4>
                 <p className="text-sm text-gray-400">
