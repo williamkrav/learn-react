@@ -17,6 +17,8 @@ const DebouncingAndThrottling = React.lazy(
   () => import('./pages/performance/DebouncingAndThrottling')
 );
 const PerformanceDemo = React.lazy(() => import('./pages/performance/PerformanceDemo'));
+const FormValidation = React.lazy(() => import('./pages/performance/FormValidation'));
+const Gradients = React.lazy(() => import('./pages/css-patterns/Gradients'));
 
 function App() {
   return (
@@ -41,8 +43,10 @@ function App() {
               <Route path="css/positions" element={<PositionsAndDisplay />} />
               <Route path="css/transitions" element={<TransitionsAndAnimations />} />
               <Route path="css/skeletons" element={<LoadingSkeletons />} />
+              <Route path="css/gradients" element={<Gradients />} />
               <Route path="performance/optimization" element={<PerformanceDemo />} />
               <Route path="performance/debounce" element={<DebouncingAndThrottling />} />
+              <Route path="performance/form-validation" element={<FormValidation />} />
             </Route>
           </Routes>
         </React.Suspense>

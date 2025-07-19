@@ -8,10 +8,12 @@ const examples = {
     { path: '/css/positions', label: 'Positions & Display' },
     { path: '/css/transitions', label: 'Transitions & Animations' },
     { path: '/css/skeletons', label: 'Loading Skeletons' },
+    { path: '/css/gradients', label: 'CSS Gradients' },
   ],
   Performance: [
     { path: '/performance/optimization', label: 'React.memo & Hooks' },
     { path: '/performance/debounce', label: 'Debouncing & Throttling' },
+    { path: '/performance/form-validation', label: 'Form Validation' },
   ],
 };
 

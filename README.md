@@ -250,3 +250,113 @@ chmod +x .husky/pre-push
 ```bash
 git commit -m "message" --no-verify
 ```
+
+# Testing
+
+This project uses Jest and React Testing Library for unit testing. Here's how to run the tests:
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode (for development)
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+## Test File Structure
+
+Tests are co-located with their components and follow the naming pattern `*.test.tsx`. For example:
+
+```
+src/
+  components/
+    Button/
+      Button.tsx
+      Button.test.tsx
+  pages/
+    FormValidation/
+      FormValidation.tsx
+      FormValidation.test.tsx
+```
+
+## Testing Best Practices
+
+1. **Component Testing**
+   - Test rendering
+   - Test user interactions
+   - Test different states (loading, error, success)
+   - Test prop variations
+
+2. **Form Testing**
+   - Test validation rules
+   - Test error messages
+   - Test submission behavior
+   - Test loading states
+
+3. **Async Testing**
+   - Use `async/await` with user events
+   - Use `waitFor` for async operations
+   - Test loading and success states
+
+4. **Test Organization**
+   - Group related tests with `describe`
+   - Use clear test descriptions
+   - Keep tests focused and isolated
+
+## Example Test
+
+```typescript
+import { render, screen } from '@testing-library/react';
+import Button from './Button';
+
+describe('Button Component', () => {
+  test('renders with text', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByText('Click me')).toBeInTheDocument();
+  });
+
+  test('handles click events', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click me</Button>);
+
+    fireEvent.click(screen.getByText('Click me'));
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+```
+
+## Setting Up Tests
+
+1. Install dependencies:
+
+```bash
+npm install --save-dev jest @types/jest @testing-library/react @testing-library/jest-dom @testing-library/user-event jest-environment-jsdom ts-jest identity-obj-proxy
+```
+
+2. Create Jest config (jest.config.ts):
+
+```typescript
+export default {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  },
+};
+```
+
+3. Add test scripts to package.json:
+
+```json
+{
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  }
+}
+```
