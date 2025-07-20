@@ -24,6 +24,7 @@ const ContextApiExample = React.lazy(() => import('./pages/state-management/Cont
 const ZustandExample = React.lazy(() => import('./pages/state-management/ZustandExample'));
 const ImageHandling = React.lazy(() => import('./pages/css-patterns/ImageHandling'));
 const ApiExamples = React.lazy(() => import('./pages/api-examples/ApiExamples'));
+const Accordion = React.lazy(() => import('./pages/css-patterns/Accordion'));
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
 
               {/* Examples routes */}
               <Route path="/" element={<ExamplesLayout />}>
+                <Route path="css/accordion" element={<Accordion />} />
                 <Route path="css/responsive" element={<ResponsiveDesign />} />
                 <Route path="css/grid-flex" element={<GridAndFlex />} />
                 <Route path="css/positions" element={<PositionsAndDisplay />} />

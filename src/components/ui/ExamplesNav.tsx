@@ -1,29 +1,30 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const examples = {
-  'CSS Patterns': [
-    { path: '/css/responsive', label: 'Responsive Design' },
-    { path: '/css/grid-flex', label: 'Grid & Flexbox' },
-    { path: '/css/positions', label: 'Positions & Display' },
-    { path: '/css/transitions', label: 'Transitions & Animations' },
-    { path: '/css/skeletons', label: 'Loading Skeletons' },
-    { path: '/css/gradients', label: 'CSS Gradients' },
-    { path: '/css/images', label: 'Image Handling' },
-  ],
-  Performance: [
-    { path: '/performance/optimization', label: 'React.memo & Hooks' },
-    { path: '/performance/debounce', label: 'Debouncing & Throttling' },
-    { path: '/performance/form-validation', label: 'Form Validation' },
-  ],
-  'State Management': [
-    { path: '/state-management/context-example', label: 'Context API Example' },
-    { path: '/state-management/zustand-example', label: 'Zustand Todo List' },
-  ],
-  'API Examples': [{ path: '/api/examples', label: 'API Calls (GET/POST)' }],
-};
+const ExamplesNav = () => {
+  const examples = {
+    'CSS Patterns': [
+      { path: '/css/accordion', name: 'Accordion' },
+      { path: '/css/gradients', name: 'Gradients' },
+      { path: '/css/grid-and-flex', name: 'Grid and Flex' },
+      { path: '/css/image-handling', name: 'Image Handling' },
+      { path: '/css/loading-skeletons', name: 'Loading Skeletons' },
+      { path: '/css/positions-and-display', name: 'Positions and Display' },
+      { path: '/css/responsive-design', name: 'Responsive Design' },
+      { path: '/css/transitions-and-animations', name: 'Transitions and Animations' },
+    ],
+    Performance: [
+      { path: '/performance/optimization', label: 'React.memo & Hooks' },
+      { path: '/performance/debounce', label: 'Debouncing & Throttling' },
+      { path: '/performance/form-validation', label: 'Form Validation' },
+    ],
+    'State Management': [
+      { path: '/state-management/context-example', label: 'Context API Example' },
+      { path: '/state-management/zustand-example', label: 'Zustand Todo List' },
+    ],
+    'API Examples': [{ path: '/api/examples', label: 'API Calls (GET/POST)' }],
+  };
 
-function ExamplesNav() {
   const location = useLocation();
 
   return (
@@ -44,7 +45,7 @@ function ExamplesNav() {
                           : 'text-gray-300 hover:bg-gray-700'
                       }`}
                     >
-                      {item.label}
+                      {item.label || item.name}
                     </Link>
                   </li>
                 ))}
@@ -55,6 +56,6 @@ function ExamplesNav() {
       </div>
     </nav>
   );
-}
+};
 
 export default ExamplesNav;
