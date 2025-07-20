@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from '../../components/ui/Card';
 
 interface GradientConfig {
-  type: 'linear' | 'radial';
+  type: 'linear' | 'radial' | 'conic';
   colors: string[];
   angle?: number;
   position?: string;
@@ -23,22 +23,27 @@ function Gradients() {
     size: 'farthest-corner',
   });
 
+  const [conicConfig, setConicConfig] = useState<GradientConfig>({
+    type: 'conic',
+    colors: ['#FF0080', '#7928CA', '#00DC82', '#36E4DA'],
+    position: 'center',
+    angle: 0,
+  });
+
   // Generate CSS gradient string
   const generateGradient = (config: GradientConfig): string => {
     if (config.type === 'linear') {
       return `linear-gradient(${config.angle}deg, ${config.colors.join(', ')})`;
-    } else {
+    } else if (config.type === 'radial') {
       return `radial-gradient(${config.size} at ${config.position}, ${config.colors.join(', ')})`;
+    } else {
+      return `conic-gradient(from ${config.angle}deg at ${config.position}, ${config.colors.join(', ')})`;
     }
   };
 
   // Generate CSS code for display
   const generateCSSCode = (config: GradientConfig): string => {
-    if (config.type === 'linear') {
-      return `background: ${generateGradient(config)};`;
-    } else {
-      return `background: ${generateGradient(config)};`;
-    }
+    return `background: ${generateGradient(config)};`;
   };
 
   return (
@@ -217,6 +222,94 @@ function Gradients() {
               <h3 className="text-lg font-medium mb-2">CSS Code</h3>
               <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
                 <code className="text-sm text-gray-300">{generateCSSCode(radialConfig)}</code>
+              </pre>
+            </div>
+          </div>
+        </Card>
+      </section>
+
+      {/* Conic Gradient Section */}
+      <section className="space-y-4">
+        <h2 className="text-2xl font-semibold">Conic Gradient</h2>
+        <Card className="bg-gray-800 border-gray-700">
+          <div className="space-y-6">
+            {/* Preview */}
+            <div
+              className="h-48 rounded-lg transition-all duration-300"
+              style={{ background: generateGradient(conicConfig) }}
+            />
+
+            {/* Controls */}
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Starting Angle</label>
+                <input
+                  type="range"
+                  min="0"
+                  max="360"
+                  value={conicConfig.angle}
+                  onChange={(e) =>
+                    setConicConfig({
+                      ...conicConfig,
+                      angle: parseInt(e.target.value),
+                    })
+                  }
+                  className="w-full"
+                />
+                <div className="text-sm text-gray-400 mt-1">{conicConfig.angle}°</div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">Position</label>
+                <select
+                  value={conicConfig.position}
+                  onChange={(e) =>
+                    setConicConfig({
+                      ...conicConfig,
+                      position: e.target.value,
+                    })
+                  }
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-white"
+                >
+                  <option value="center">Center</option>
+                  <option value="top">Top</option>
+                  <option value="right">Right</option>
+                  <option value="bottom">Bottom</option>
+                  <option value="left">Left</option>
+                  <option value="top left">Top Left</option>
+                  <option value="top right">Top Right</option>
+                  <option value="bottom left">Bottom Left</option>
+                  <option value="bottom right">Bottom Right</option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                {conicConfig.colors.map((color, index) => (
+                  <div key={index}>
+                    <label className="block text-sm font-medium mb-2">Color {index + 1}</label>
+                    <input
+                      type="color"
+                      value={color}
+                      onChange={(e) => {
+                        const newColors = [...conicConfig.colors];
+                        newColors[index] = e.target.value;
+                        setConicConfig({
+                          ...conicConfig,
+                          colors: newColors,
+                        });
+                      }}
+                      className="w-full h-10 rounded cursor-pointer"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Code */}
+            <div>
+              <h3 className="text-lg font-medium mb-2">CSS Code</h3>
+              <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
+                <code className="text-sm text-gray-300">{generateCSSCode(conicConfig)}</code>
               </pre>
             </div>
           </div>

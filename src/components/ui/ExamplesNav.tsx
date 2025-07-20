@@ -17,6 +17,7 @@ const examples = {
     { path: '/performance/form-validation', label: 'Form Validation' },
   ],
   'State Management': [{ path: '/state-management/context-example', label: 'Context API Example' }],
+  'API Examples': [{ path: '/api/examples', label: 'API Calls (GET/POST)' }],
 };
 
 function ExamplesNav() {

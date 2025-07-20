@@ -22,6 +22,7 @@ const FormValidation = React.lazy(() => import('./pages/performance/FormValidati
 const Gradients = React.lazy(() => import('./pages/css-patterns/Gradients'));
 const ContextApiExample = React.lazy(() => import('./pages/state-management/ContextApiExample'));
 const ImageHandling = React.lazy(() => import('./pages/css-patterns/ImageHandling'));
+const ApiExamples = React.lazy(() => import('./pages/api-examples/ApiExamples'));
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
                 <Route path="performance/debounce" element={<DebouncingAndThrottling />} />
                 <Route path="performance/form-validation" element={<FormValidation />} />
                 <Route path="state-management/context-example" element={<ContextApiExample />} />
+                <Route path="api/examples" element={<ApiExamples />} />
               </Route>
             </Routes>
           </React.Suspense>
