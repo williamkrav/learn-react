@@ -16,7 +16,10 @@ const examples = {
     { path: '/performance/debounce', label: 'Debouncing & Throttling' },
     { path: '/performance/form-validation', label: 'Form Validation' },
   ],
-  'State Management': [{ path: '/state-management/context-example', label: 'Context API Example' }],
+  'State Management': [
+    { path: '/state-management/context-example', label: 'Context API Example' },
+    { path: '/state-management/zustand-example', label: 'Zustand Todo List' },
+  ],
   'API Examples': [{ path: '/api/examples', label: 'API Calls (GET/POST)' }],
 };
 
