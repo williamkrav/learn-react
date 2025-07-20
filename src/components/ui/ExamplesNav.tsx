@@ -4,14 +4,14 @@ import { Link, useLocation } from 'react-router-dom';
 const ExamplesNav = () => {
   const examples = {
     'CSS Patterns': [
-      { path: '/css/accordion', name: 'Accordion' },
-      { path: '/css/gradients', name: 'Gradients' },
-      { path: '/css/grid-and-flex', name: 'Grid and Flex' },
-      { path: '/css/image-handling', name: 'Image Handling' },
-      { path: '/css/loading-skeletons', name: 'Loading Skeletons' },
-      { path: '/css/positions-and-display', name: 'Positions and Display' },
-      { path: '/css/responsive-design', name: 'Responsive Design' },
-      { path: '/css/transitions-and-animations', name: 'Transitions and Animations' },
+      { path: '/css/accordion', label: 'Accordion' },
+      { path: '/css/gradients', label: 'Gradients' },
+      { path: '/css/grid-and-flex', label: 'Grid and Flex' },
+      { path: '/css/image-handling', label: 'Image Handling' },
+      { path: '/css/loading-skeletons', label: 'Loading Skeletons' },
+      { path: '/css/positions-and-display', label: 'Positions and Display' },
+      { path: '/css/responsive-design', label: 'Responsive Design' },
+      { path: '/css/transitions-and-animations', label: 'Transitions and Animations' },
     ],
     Performance: [
       { path: '/performance/optimization', label: 'React.memo & Hooks' },
@@ -45,7 +45,7 @@ const ExamplesNav = () => {
                           : 'text-gray-300 hover:bg-gray-700'
                       }`}
                     >
-                      {item.label || item.name}
+                      {item.label}
                     </Link>
                   </li>
                 ))}
